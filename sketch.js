@@ -74,6 +74,7 @@ function draw() {
   let topSpots = brightSpots.slice(0, min(numSpots, brightSpots.length));
 
   // Draw connecting lines
+  strokeWeight(1);
 
   stroke(0, 255, 0, 150);
 
@@ -88,8 +89,9 @@ function draw() {
   // Draw red circles on bright spots
 
   stroke(255, 0, 0);
+  strokeWeight(3);
 
   for (let pt of topSpots) {
-    rect(pt.x, pt.y, 50, 25);
+    rect(pt.x, pt.y, 100, 50);
   }
 }
