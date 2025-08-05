@@ -1,8 +1,8 @@
 let video;
 
-let threshold = 180;
+let threshold = 200;
 
-let numSpots = 10;
+let numSpots = 20;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -37,34 +37,31 @@ function draw() {
 
   let brightSpots = [];
 
-  for (let i = 0; i < 10000; i++) {
-    //get a random x and y
-    let x = floor(random(video.width));
-    let y = floor(random(video.height));
-    // find its index in the pixel array
-    let index = (x + y * video.width) * 4;
+  for (let y = 0; y < video.height; y++) {
+    for (let x = 0; x < video.width; x++) {
+      let index = (x + y * video.width) * 4;
 
-    let r = video.pixels[index];
+      let r = video.pixels[index];
 
-    let g = video.pixels[index + 1];
+      let g = video.pixels[index + 1];
 
-    let b = video.pixels[index + 2];
+      let b = video.pixels[index + 2];
 
-    let brightness = (r + g + b) / 3;
+      let brightness = (r + g + b) / 3;
 
-    if (brightness > threshold) {
-      print("boop");
-      let scaledX = map(x, 0, video.width, 0, width);
+      if (brightness > threshold) {
+        let scaledX = map(x, 0, video.width, 0, width);
 
-      let scaledY = map(y, 0, video.height, 0, height);
+        let scaledY = map(y, 0, video.height, 0, height);
 
-      brightSpots.push({
-        x: scaledX,
+        brightSpots.push({
+          x: scaledX,
 
-        y: scaledY,
+          y: scaledY,
 
-        brightness: brightness,
-      });
+          brightness: brightness,
+        });
+      }
     }
   }
 
