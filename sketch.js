@@ -1,6 +1,6 @@
 let video;
 
-let threshold = 230;
+let threshold = 200;
 
 let numSpots = 20;
 
@@ -23,7 +23,7 @@ function setup() {
   video = createCapture(VIDEO, { flipped: true }); //for computer
   // video = createCapture(VIDEO, constraints); // for phone
 
-  video.size(160, 120); // Downsample for speed
+  video.size(320, 240); // Downsample for speed
 
   video.hide();
 }
